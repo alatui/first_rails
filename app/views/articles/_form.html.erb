@@ -1,19 +1,14 @@
-<% if @article.errors.any? %>
-    <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-      <% end %>
-    </ul>
-<% end %>
+<%= render 'shared/errors', obj: @article %>
+
 
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-12">
     <%= form_for @article, :html => {class: 'form-horizontal', role: 'form'} do |f| %>
         <div class="form-group">
           <div class="control-label col-md-2">
             <%= f.label :title %>
           </div>
-          <div class="col-md-10">
+          <div class="col-md-8">
             <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
           </div>
         </div>
@@ -21,7 +16,7 @@
           <div class="control-label col-md-2">
             <%= f.label :description %>
           </div>
-          <div class="col-md-10">
+          <div class="col-md-8">
             <%= f.text_area :description, class: 'form-control', placeholder: 'Description', rows: 8 %>
           </div>
         </div>
