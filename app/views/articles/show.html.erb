@@ -1,8 +1,28 @@
 <h2><%= @article.title %> </h2>
-<div class="well"><%= simple_format(@article.description) %> </div>
 
-<%= link_to 'Back to articles listing', articles_path, class: 'btn btn-xs btn-primary' %>
-<%= link_to 'Edit this article', edit_article_path(@article), class: 'btn btn-xs btn-success' %>
-<%= link_to 'Delete this article', article_path(@article),method: :delete,
-                                    class: 'btn btn-xs btn-danger',
-                                    data: {confirm: 'Are you sure ?'} %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="well"><%= simple_format(@article.description) %> </div>
+
+    <%= link_to 'Back to articles listing', articles_path, class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Edit this article', edit_article_path(@article), class: 'btn btn-xs btn-success' %>
+    <%= link_to 'Delete this article', article_path(@article),method: :delete,
+                class: 'btn btn-xs btn-danger',
+                data: {confirm: 'Are you sure ?'} %>
+  </div>
+</div>
+
+<% if @article.user %>
+  <div class="row">
+    <div class="col-md-12 ">
+      <ul class="listing">
+        <li>Created by</li>
+        <li><%= link_to gravatar_for(@article.user, size: 80), user_path(@article.user) %></li>
+        <li class="article-title"><%= link_to @article.user.username, user_path(@article.user) %></li>
+        <li>
+          <small><%= pluralize(@article.user.articles.count, 'article') if @article.user.articles.count > 0 %></small>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>

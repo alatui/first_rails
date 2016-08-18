@@ -1,0 +1,14 @@
+<h1>All Alpha Boggers</h1>
+<% @users.each do |user| %>
+    <div class="row">
+      <div class="col-md-12 well">
+        <ul class="listing">
+          <li><%= link_to gravatar_for(user), user_path(user) %></li>
+          <li class="article-title"><%= link_to user.username, user_path(user) %></li>
+          <li>
+            <small><%= pluralize(user.articles.count, 'article') if user.articles.count > 0 %></small>
+          </li>
+        </ul>
+      </div>
+    </div>
+<% end %>
