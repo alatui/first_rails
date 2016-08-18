@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   #post 'users' => 'users#create'
   resources :users, except: [:new]
 
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
 end
