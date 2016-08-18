@@ -5,6 +5,8 @@
   </div>
 </div>
 <h4 class="text-center"><%= @user.username %>'s articles</h4>
-<% @user.articles.each do |article| %>
+<% @user_articles.each do |article| %>
   <%= render('/articles/article', {article: article}) %>
 <% end %>
+
+<%= render('/shared/pagination', {collection: @user_articles} ) %>
