@@ -8,6 +8,14 @@
           <li>
             <small><%= pluralize(user.articles.count, 'article') if user.articles.count > 0 %></small>
           </li>
+          <% if logged_in? and current_user.admin? %>
+            <li>
+              <%= link_to('Delete user', user_path(user),
+                          class: 'btn btn-danger btn-sm',
+                          method: :delete,
+                          data: {confirm: 'Are you sure ?'}) %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
