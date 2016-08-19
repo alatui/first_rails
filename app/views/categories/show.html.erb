@@ -1,0 +1,11 @@
+<h2><%= "Category: #{@category.name}" %></h2>
+
+
+
+
+
+<% @category_articles.each do |article| %>
+    <%= render('/articles/article', {article: article} ) %>
+<% end %>
+
+<%= render('/shared/pagination', {collection: @category_articles} ) %>

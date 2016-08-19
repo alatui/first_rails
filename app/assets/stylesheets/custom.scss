@@ -2,6 +2,7 @@ $navbar-default-bg: black;
 $navbar-default-link-color: #FFF;
 $navbar-default-link-hover-color: #CCC;
 $navbar-default-link-active-color: #CCC;
+$badge-bg: #CEF6F5;
 
 
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
@@ -86,3 +87,4 @@ $navbar-default-link-active-color: #CCC;
   list-style: none;
   padding-left: 0px;
 }
+
