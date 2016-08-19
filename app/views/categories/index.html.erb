@@ -1,0 +1,12 @@
+<h2>Categories</h2>
+
+
+<% @categories.each do |category| %>
+    <div class="row">
+      <div class="col-md-12 well">
+        <div class="article-title"><%= link_to category.name, category_path(category)  %></div>
+      </div>
+    </div>
+<% end %>
+
+<%= render 'shared/pagination', collection: @categories %>
