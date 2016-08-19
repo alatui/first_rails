@@ -3,12 +3,11 @@ require 'test_helper'
 class CreateCategoriesTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = { username: 'fernando', email: 'fernando.saxofone@gmail.com', password: '1234', admin: true }
-    @current_user = User.create(@user)
+    @user = User.create(username: 'fernando', email: 'fernando.saxofone@gmail.com', password: '1234', admin: true)
   end
 
   test 'get new category form and create category' do
-    login
+    login_as(@user, '1234')
     get new_category_path
     #follow_redirect!
     assert_template 'categories/new'
@@ -21,7 +20,7 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
   end
 
   test 'create category without name' do
-    login
+    login_as(@user, '1234')
     get new_category_path
     assert_template 'categories/new'
     assert_no_difference 'Category.count' do
@@ -32,13 +31,6 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     assert_match "Name is too short (minimum is 3 characters)", response.body
     assert_select 'div.panel.panel-danger'
   end
-
-
-  private
-    def login
-      post login_path, params: { session: { email: @user[:email],
-                                            password: @user[:password] } }
-    end
 
 
 end
