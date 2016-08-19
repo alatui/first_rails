@@ -1,5 +1,8 @@
 <h2><%= "Category: #{@category.name}" %></h2>
 
+<% if logged_in? && current_user.admin? %>
+  <p><%= link_to 'Edit category', edit_category_path(@category), class: 'btn btn-sm btn-primary' %></p>
+<% end %>
 
 
 
